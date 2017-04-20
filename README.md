@@ -1,4 +1,4 @@
-# begin from SICP
+# Learn SICP
 
 MIT官网描述[mit-sicp](https://mitpress.mit.edu/sicp/)
 
