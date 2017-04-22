@@ -45,3 +45,4 @@
 ;(rainbow (square 5))
 
 ;(apply vc-append (rainbow (square 5)))
+(provide rainbow square)
