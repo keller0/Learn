@@ -9,3 +9,5 @@
 ## Book [Programming Erlang Software for a Concurrent World](https://pragprog.com/book/jaerlang2/programming-erlang)
 
 ## Doc [Erlang/OTP](http://erlang.org/doc/index.html) 
+
+## Web [Learn You Some Erlang for Great Good](http://learnyousomeerlang.com/content)
