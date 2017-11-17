@@ -1,0 +1,12 @@
+λ typer types1.erl
+
+%% File: "types1.erl"
+%% ------------------
+-spec f1({number(),number(),number()}) -> number().
+-spec f2({integer(),number(),number()}) -> number().
+-spec f3({integer(),integer(),integer()}) -> integer().
+-spec print(integer(),integer(),integer()) -> 'ok'.
+λ dialyzer types1.erl
+  Checking whether the PLT /home/cai/.dialyzer_plt is up-to-date... yes
+  Proceeding with analysis... done in 0m0.12s
+done (passed successfully)

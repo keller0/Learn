@@ -1,0 +1,15 @@
+λ dialyzer types1_bug.erl
+  Checking whether the PLT /home/cai/.dialyzer_plt is up-to-date... yes
+  Proceeding with analysis...
+types1_bug.erl:4: Function f4/1 has no local return
+types1_bug.erl:5: The call types1_bug:print(H::float(),M::any(),S::any()) will never return since it differs in the 1st argument from the success typing arguments: (integer(),integer(),integer())
+types1_bug.erl:8: Function print/3 has no local return
+types1_bug.erl:9: The call erlang:integer_to_list(H::float()) breaks the contract (Integer) -> string() when Integer :: integer()
+ done in 0m0.11s
+done (warnings were emitted)
+λ typer types1_bug.erl
+
+%% File: "types1_bug.erl"
+%% ----------------------
+-spec f4(_) -> none().
+-spec print(integer(),integer(),integer()) -> 'ok'.
