@@ -1,0 +1,7 @@
+λ dialyzer dialyzer/test2.erl 
+  Checking whether the PLT /home/cai/.dialyzer_plt is up-to-date... yes
+  Proceeding with analysis...
+test2.erl:4: Function f1/0 has no local return
+test2.erl:5: The call erlang:list_to_tuple({'a','b','c'}) breaks the contract (List) -> tuple() when List :: [term()]
+ done in 0m0.15s
+done (warnings were emitted)

@@ -1,0 +1,14 @@
+λ dialyzer --build_plt --apps erts kernel stdlib
+  Compiling some key modules to native code... done in 0m45.75s
+  Creating PLT /home/cai/.dialyzer_plt ...
+Unknown functions:
+  compile:file/2
+  compile:forms/2
+  compile:noenv_forms/2
+  compile:output_generated/1
+  crypto:block_decrypt/4
+  crypto:start/0
+Unknown types:
+  compile:option/0
+ done in 0m49.57s
+done (passed successfully)

@@ -1,0 +1,7 @@
+λ dialyzer dialyzer/test3.erl 
+  Checking whether the PLT /home/cai/.dialyzer_plt is up-to-date... yes
+  Proceeding with analysis...
+test3.erl:4: Function test/0 has no local return
+test3.erl:5: The call test3:factorial(-5) will never return since it differs in the 1st argument from the success typing arguments: (non_neg_integer())
+ done in 0m0.17s
+done (warnings were emitted)
