@@ -1,0 +1,51 @@
+<html>
+	<head>
+	<script type="text/javascript"
+	  src="dygraph.js"></script>
+	<link rel="stylesheet" src="dygraph.css" />
+	<style>
+	 .dygraph-legend {
+	  position: absolute;
+	  font-size: 14px;
+	  z-index: 10;
+	  width: 250px;
+	  background: white;
+	  line-height: normal;
+	  text-align: left;
+	  overflow: hidden;
+	}
+	  </style>
+	</head>
+	<body>
+	<div>
+	  <h3 align="left">
+			Erlang spwan() speed test
+			|
+			<a href="index.html">Home</a>	
+		</h3>
+	  <h4 align="left">
+			Time(microsecond) of create and destory <span style="color:red">one</span> process when the total number is 1~20k.
+			|
+			<a href="spwanTotal20k.html">See the total time data</a>
+			|
+			<a href="">Source code</a>	
+		</h4>  
+	  </div>
+	<div id="graphdiv" style="position: absolute;height:500px;width:1000px;"></div>
+	
+	<div id="speed"></div>
+	<script type="text/javascript">
+	
+	  g = new Dygraph(
+	  document.getElementById("graphdiv"),
+	  "data/spwan2w.csv",
+	  {
+	  rollPeriod: 200,
+	  }
+	  );
+	
+	
+	</script>
+	</body>
+	</html>
+	

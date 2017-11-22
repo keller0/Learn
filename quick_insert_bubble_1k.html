@@ -1,0 +1,45 @@
+<html>
+<head>
+<script type="text/javascript"
+  src="dygraph.js"></script>
+<link rel="stylesheet" src="dygraph.css" />
+<style>
+ .dygraph-legend {
+  position: absolute;
+  font-size: 14px;
+  z-index: 10;
+  width: 250px;
+  background: white;
+  line-height: normal;
+  text-align: left;
+  overflow: hidden;
+}
+  </style>
+</head>
+<body>
+<div>
+  <h3 align="left">
+    Quick,insert,bubble sort speed test
+    |
+    <a href="index.html">Home</a>	
+  </h3>
+  <h4 align="left">Time(microsecond) of sorting 1~1k intergers. More:<a href="./quick_insert_bubble_30k.html">1~30K</a>.</h4>   
+  
+  </div>
+<div id="graphdiv" style="position: absolute;height:500px;width:1000px;"></div>
+
+<div id="speed"></div>
+<script type="text/javascript">
+
+  g = new Dygraph(
+  document.getElementById("graphdiv"),
+  "data/three1k.csv",
+  {
+  rollPeriod: 100,
+  }
+  );
+
+
+</script>
+</body>
+</html>
