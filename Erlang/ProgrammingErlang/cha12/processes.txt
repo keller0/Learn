@@ -1,0 +1,21 @@
+λ erl +P 300000
+Erlang/OTP 20 [erts-9.0] [source] [64-bit] [smp:4:4] [ds:4:4:10] [async-threads:10] [hipe] [kernel-poll:false]
+
+Eshell V9.0  (abort with ^G)
+1> c(processes).
+{ok,processes}
+2> processes:max(200000).
+Maximum allowed processes:524288
+Process spawn time=2.75 (2.76) microseconds
+ok
+3> processes:max(300000).
+Maximum allowed processes:524288
+Process spawn time=2.6 (2.62) microseconds
+ok
+4> processes:max(400000).
+Maximum allowed processes:524288
+Process spawn time=2.75 (2.85) microseconds
+ok
+5> processes:max(500000).
+Maximum allowed processes:524288
+Process spawn time=2.6 (2.662) microseconds
