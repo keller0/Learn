@@ -10,4 +10,4 @@
 
 ## Doc [Erlang/OTP](http://erlang.org/doc/index.html) 
 
-## Web [Learn You Some Erlang for Great Good](http://learnyousomeerlang.com/content)
+## Websites [Learn You Some Erlang for Great Good](http://learnyousomeerlang.com/content),[Erlang.org](http://erlang.org)
