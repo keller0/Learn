@@ -1,61 +1,57 @@
 <html>
-		<head>
-				<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<meta property="og:title" content="Chuib" />
-				<meta property="og:type" content="computer program" />
-				<meta property="og:url" content="https://keller0.github.io" />
-				<meta property="og:image" content="https://keller0.github.io/public/chuib.png" />
-				<meta name="description" content="kellr0's blog">
-				<meta name="keywords" content="computer,softwear,computer program,language,test data">
-				<meta name="author" content="Cai jiaqi">
-				<meta http-equiv="X-UA-Compatible" content="ie=edge">
-				<link rel="shortcut icon" href="./public/favicon.ico" />
-				<title>keller0</title>
-				<script type="text/javascript"src="public/dygraph.js"></script>
-				<link rel="stylesheet" src="dygraph.css" />
-		</head>
-		<style>
-				.dygraph-legend {
-				 position: absolute;
-				 font-size: 14px;
-				 z-index: 10;
-				 width: 250px;
-				 background: white;
-				 line-height: normal;
-				 text-align: left;
-				 overflow: hidden;
-			 }
-			</style>
-	<body>
-	<div>
-	  <h3 align="left">
-			Quick,insert,bubble sort speed test
-			|
-		  <a href="index.html">Home</a>	
-		</h3>
-	  <h4 align="left">Time(microsecond) of sorting 1~30k intergers.
-			More:<a href="quick_insert_bubble_1k.html">1~1K</a>
-			|
-			<a href="https://github.com/keller0/Learn/blob/master/OS_C/sort/threeSort.c" target="_blank">Source code</a>
-		</h4>   
-	  
-	  </div>
-	<div id="graphdiv" style="position: absolute;height:500px;width:1000px;"></div>
-	
-	<div id="speed"></div>
-	<script type="text/javascript">
-	
-	  g = new Dygraph(
-	  document.getElementById("graphdiv"),
-	  "data/three3w.csv",
-	  {
-	  rollPeriod: 100,
-	  }
-	  );
-	
-	
-	</script>
-	</body>
-	</html>
+<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta property="og:title" content="keller0" />
+		<meta property="og:type" content="computer program" />
+		<meta property="og:url" content="https://keller0.github.io" />
+		<meta name="description" content="kellr0's blog">
+		<meta name="keywords" content="computer,softwear,computer language,test data">
+		<meta name="author" content="Cai jiaqi">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="shortcut icon" href="./public/favicon.ico" />
+		<title>keller0</title>
+		<script type="text/javascript"src="public/dygraph.js"></script>
+		<link rel="stylesheet" src="public/dygraph.css" />
+</head>
+<style>
+		.dygraph-legend {
+		position: absolute;
+		font-size: 14px;
+		z-index: 10;
+		width: 328px;
+		background: white;
+		line-height: normal;
+		text-align: left;
+		overflow: hidden;
+	}
+	</style>
+<body>
+<div>
+<h3 align="left">
+	Quick,insert,bubble sort speed test
+	|
+	<a href="index.html">Home</a>	
+</h3>
+<h4 align="left">Time(microsecond) of sorting 1~30k intergers.
+	More:<a href="quick_insert_bubble_1k.html"title="Time of sorting 1~1k intergers">1~1K</a>
+	|
+	<a href="https://github.com/keller0/Learn/blob/master/OS_C/sort/threeSort.c" target="_blank">Source code</a>
+</h4>   
+
+</div>
+<div id="graphdiv" style="position: absolute;height:500px;width:1000px;"></div>
+
+<div id="speed"></div>
+<script type="text/javascript">
+	g = new Dygraph(
+	document.getElementById("graphdiv"),
+	"data/three3w.csv",
+	{
+	rollPeriod: 100,
+	}
+	);
+</script>
+</body>
+</html>
 	
