@@ -1,0 +1,62 @@
+div {
+    display: block;
+}
+table.def {
+    border: 1px solid #ddd;
+    font-size: 11px;
+    border-collapse: collapse;
+    text-align: center;
+    float: right;
+}
+table.def i {
+    color: #C8C8C8;
+    font-style: normal;
+}
+#left {
+	float: left;
+	width: 40%;
+}
+#cal_div {
+    float: right;
+    width: 60%;
+}
+#numbers label {
+    display: block;
+    float: left;
+    margin-right: 15px;
+    font-weight: bold;
+    font-size: 15px;
+}
+label {
+    cursor: default;
+}
+#bits {
+    border: 1px solid #CCC;
+}
+#bits, #bitframe {
+    display: table;
+    width: auto !important;
+    padding: 0;
+}
+#bitframe h3 {
+    font-size: 12px;
+    margin: 0 0 8px 0;
+    padding: 0;
+    text-align: center;
+}
+#bits_0, #bits_1, #bits_2, #bits_3 {
+    float: left;
+    margin: 0;
+    padding: 0;
+    display: table;
+    width: 160px;
+}
+
+#bin_tab td {
+	width: 13px;
+	padding: 1px;
+
+}
+.dev {
+	background: red;
+}
