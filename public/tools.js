@@ -1,11 +1,9 @@
 $(document).ready(function(){
-
 	initBits(0);
 	$("#hex").keyup(function(){changeInput(this,'hex');});
 	$("#oct").keyup(function(){changeInput(this,'oct');});
 	$("#dec").keyup(function(){changeInput(this,'dec');});
 	$(".bin_bits .right").click(function(){clickBits(this);});
-
 });
 /**
  * update data when change input fields
@@ -15,7 +13,7 @@ $(document).ready(function(){
 function changeInput(obj,Type) {
 	obj = $(obj);
 	var nv = obj.val();
-	if(nv == '') {
+	if(nv == '' || nv == 'Na') {
 		updateAll(0);
 		return;
 	}
