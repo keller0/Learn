@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	initBits(0);
+	$("#clear").click(function(){clearAll();});
 	$("#hex").keyup(function(){changeInput(this,'hex');});
 	$("#oct").keyup(function(){changeInput(this,'oct');});
 	$("#dec").keyup(function(){changeInput(this,'dec');});
@@ -39,6 +40,10 @@ function changeInput(obj,Type) {
 function updateAll(v) {
 	updateInput(v)
 	initBits(v);
+}
+function clearAll() {
+	updateInput(0);
+	initBits(0);
 }
 /**
  * use decimal update all input text
