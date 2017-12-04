@@ -60,8 +60,8 @@ function initBits(v) {
 	}else{
 		initBits(0);
 		for(i = 0; i < 64; i++) {
+			var bit = $(".bin_bits .right").eq(63-i);
 			if(v%2 == 1) {
-				var bit = $(".bin_bits .right").eq(63-i);
 				bit.html('1');
 				bit.addClass('bit_1');
 			}
