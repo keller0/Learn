@@ -112,3 +112,15 @@ ssize_t rio_readnb(rio_t *rp, void *usrbuf, size_t n)
     }
     return (n - nleft);          /* Return >= 0 */
 }
+
+void Stat(const char *filename, struct stat *buf) 
+{
+    if (stat(filename, buf) < 0)
+	unix_error("Stat error");
+}
+
+void unix_error(char *msg) /* Unix-style error */
+{
+    fprintf(stderr, "%s: %s\n", msg, strerror(errno));
+    exit(0);
+}
