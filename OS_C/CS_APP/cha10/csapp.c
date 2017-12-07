@@ -1,4 +1,5 @@
 #include "csapp.h"
+
 ssize_t rio_readn(int fd, void *usrbuf, size_t n)
 {
     size_t nleft = n;
@@ -112,11 +113,57 @@ ssize_t rio_readnb(rio_t *rp, void *usrbuf, size_t n)
     }
     return (n - nleft);          /* Return >= 0 */
 }
+/**********************************
+ * Rio functions with Wrappers 
+ **********************************/
+ssize_t Rio_readn(int fd, void *ptr, size_t nbytes) 
+{
+    ssize_t n;
+  
+    if ((n = rio_readn(fd, ptr, nbytes)) < 0)
+	unix_error("Rio_readn error");
+    return n;
+}
+
+void Rio_writen(int fd, void *usrbuf, size_t n) 
+{
+    if (rio_writen(fd, usrbuf, n) != n)
+	unix_error("Rio_writen error");
+}
+
+void Rio_readinitb(rio_t *rp, int fd)
+{
+    rio_readinitb(rp, fd);
+} 
+
+ssize_t Rio_readnb(rio_t *rp, void *usrbuf, size_t n) 
+{
+    ssize_t rc;
+
+    if ((rc = rio_readnb(rp, usrbuf, n)) < 0)
+	unix_error("Rio_readnb error");
+    return rc;
+}
+
+ssize_t Rio_readlineb(rio_t *rp, void *usrbuf, size_t maxlen) 
+{
+    ssize_t rc;
+
+    if ((rc = rio_readlineb(rp, usrbuf, maxlen)) < 0)
+	unix_error("Rio_readlineb error");
+    return rc;
+} 
 
 void Stat(const char *filename, struct stat *buf) 
 {
     if (stat(filename, buf) < 0)
 	unix_error("Stat error");
+}
+
+void Fstat(int fd, struct stat *buf) 
+{
+    if (fstat(fd, buf) < 0)
+	unix_error("Fstat error");
 }
 
 void unix_error(char *msg) /* Unix-style error */

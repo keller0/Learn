@@ -1,60 +1,73 @@
- #include <sys/types.h>
-       #include <sys/stat.h>
-       #include <time.h>
-       #include <stdio.h>
-       #include <stdlib.h>
-       #include <sys/sysmacros.h>
+/* These functions return information about a file. No permissions are
+   required on the file itself, but-in the case of stat() and lstat()
+   - execute (search) permission is required on all of the directories
+   in path that lead to the file. 
 
-       int
-       main(int argc, char *argv[])
-       {
-           struct stat sb;
+   stat() stats the file pointed to by path and fills in buf. 
+   lstat() is identical to stat(), except that if path is a symbolic
+   link, then the link itself is stat-ed, not the file that it refers
+   to.
+ 
+   fstat() is identical to stat(), except that the file to be stat-ed
+   is specified by the file descriptor fd. 
+*/
 
-           if (argc != 2) {
-               fprintf(stderr, "Usage: %s <pathname>\n", argv[0]);
-               exit(EXIT_FAILURE);
-           }
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <time.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/sysmacros.h>
 
-           if (lstat(argv[1], &sb) == -1) {
-               perror("lstat");
-               exit(EXIT_FAILURE);
-           }
+int main(int argc, char *argv[])
+{
+        struct stat sb;
 
-           printf("ID of containing device:  [%lx,%lx]\n",
-                (long) major(sb.st_dev), (long) minor(sb.st_dev));
+        if (argc != 2) {
+        fprintf(stderr, "Usage: %s <pathname>\n", argv[0]);
+        exit(EXIT_FAILURE);
+        }
 
-           printf("File type:                ");
+        if (lstat(argv[1], &sb) == -1) {
+        perror("lstat");
+        exit(EXIT_FAILURE);
+        }
 
-           switch (sb.st_mode & S_IFMT) {
-           case S_IFBLK:  printf("block device\n");            break;
-           case S_IFCHR:  printf("character device\n");        break;
-           case S_IFDIR:  printf("directory\n");               break;
-           case S_IFIFO:  printf("FIFO/pipe\n");               break;
-           case S_IFLNK:  printf("symlink\n");                 break;
-           case S_IFREG:  printf("regular file\n");            break;
-           case S_IFSOCK: printf("socket\n");                  break;
-           default:       printf("unknown?\n");                break;
-           }
+        printf("ID of containing device:  [%lx,%lx]\n",
+        (long) major(sb.st_dev), (long) minor(sb.st_dev));
 
-           printf("I-node number:            %ld\n", (long) sb.st_ino);
+        printf("File type:                ");
 
-           printf("Mode:                     %lo (octal)\n",
-                   (unsigned long) sb.st_mode);
+        switch (sb.st_mode & S_IFMT) {
+        case S_IFBLK:  printf("block device\n");            break;
+        case S_IFCHR:  printf("character device\n");        break;
+        case S_IFDIR:  printf("directory\n");               break;
+        case S_IFIFO:  printf("FIFO/pipe\n");               break;
+        case S_IFLNK:  printf("symlink\n");                 break;
+        case S_IFREG:  printf("regular file\n");            break;
+        case S_IFSOCK: printf("socket\n");                  break;
+        default:       printf("unknown?\n");                break;
+        }
 
-           printf("Link count:               %ld\n", (long) sb.st_nlink);
-           printf("Ownership:                UID=%ld   GID=%ld\n",
-                   (long) sb.st_uid, (long) sb.st_gid);
+        printf("I-node number:            %ld\n", (long) sb.st_ino);
 
-           printf("Preferred I/O block size: %ld bytes\n",
-                   (long) sb.st_blksize);
-           printf("File size:                %lld bytes\n",
-                   (long long) sb.st_size);
-           printf("Blocks allocated:         %lld\n",
-                   (long long) sb.st_blocks);
+        printf("Mode:                     %lo (octal)\n",
+                (unsigned long) sb.st_mode);
 
-           printf("Last status change:       %s", ctime(&sb.st_ctime));
-           printf("Last file access:         %s", ctime(&sb.st_atime));
-           printf("Last file modification:   %s", ctime(&sb.st_mtime));
+        printf("Link count:               %ld\n", (long) sb.st_nlink);
+        printf("Ownership:                UID=%ld   GID=%ld\n",
+                (long) sb.st_uid, (long) sb.st_gid);
 
-           exit(EXIT_SUCCESS);
-       }
+        printf("Preferred I/O block size: %ld bytes\n",
+                (long) sb.st_blksize);
+        printf("File size:                %lld bytes\n",
+                (long long) sb.st_size);
+        printf("Blocks allocated:         %lld\n",
+                (long long) sb.st_blocks);
+
+        printf("Last status change:       %s", ctime(&sb.st_ctime));
+        printf("Last file access:         %s", ctime(&sb.st_atime));
+        printf("Last file modification:   %s", ctime(&sb.st_mtime));
+
+        exit(EXIT_SUCCESS);
+}
