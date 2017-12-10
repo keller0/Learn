@@ -1,0 +1,7 @@
+#! /usr/bin/awk -f
+
+BEGIN { print "Don't Panic!" }
+#run this file:
+#awk -f filename
+#dose the same thing as :
+#awk 'BEGIN { print "Don\47t Panic!" }'

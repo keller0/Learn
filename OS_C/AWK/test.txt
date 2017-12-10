@@ -1,0 +1,22 @@
+$awk 'BEGIN {print "Don\47t Panic!"}'
+$awk '{print}'
+
+$awk 'BEGIN { print "Don\47t Panic!" }'
+-|Don't Panic!
+$awk "BEGIN { print \"DON't Panic!\" }"
+-|DON't Panic!
+#Note that the single quote is not special within double quotes.
+
+$awk 'BEGIN { print "Here is a single quote <'"'"'>" }'
+-| Here is a single quote <'>
+$awk 'BEGIN { print "Here is a single quote <'\''>" }'
+-| Here is a single quote <'>
+$awk "BEGIN { print \"Here is a single quote <'>\" }"
+-| Here is a single quote <'>
+
+$ awk 'BEGIN { print "Here is a single quote <\47>" }'
+-| Here is a single quote <'>
+$ awk 'BEGIN { print "Here is a double quote <\42>" }'
+-| Here is a double quote <">
+$ awk -v sq="'" 'BEGIN { print "Here is a single quote <" sq ">" }'
+-| Here is a single quote <'>
