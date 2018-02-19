@@ -17,8 +17,8 @@ void print_list(lnode *n) {
 
 struct ListNode* addTwoNumbers(struct ListNode* l1,
 							   struct ListNode* l2) {
-  struct ListNode* head = l1 ? l1 : l2;
-  struct ListNode res = { .next = head};
+  struct ListNode *head = l1 ? l1 : l2;
+  struct ListNode *res = head;
   int carrier = 0;
 
   while(l1 || l2) {
@@ -33,7 +33,7 @@ struct ListNode* addTwoNumbers(struct ListNode* l1,
   	head->val = carrier;
   	head->next = NULL;
   }
-  return res.next;
+  return res;
 }
 struct ListNode *makeListFromChars(const char *array, int size){
   struct ListNode anchor  = { .next = NULL }, *curr = &anchor;
