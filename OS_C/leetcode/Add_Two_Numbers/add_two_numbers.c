@@ -7,72 +7,55 @@ typedef struct ListNode {
      struct ListNode *next;
 }lnode;
 
+void print_list(lnode *n) { 
+  while(n){
+	printf("%d -> ",n->val);
+	n = n->next;
+  }
+  printf("NULL\n");
+}
+
 struct ListNode* addTwoNumbers(struct ListNode* l1,
 							   struct ListNode* l2) {
-  if(l1 == NULL) return l2;
-  if(l2 == NULL) return l1;
-  struct ListNode* head = l1;
+  struct ListNode* head = l1 ? l1 : l2;
+  struct ListNode res = { .next = head};
+  int carrier = 0;
 
-  int d = 0;
-  while(l1->next && l2->next){
-	d = l1->val + l2->val + d;
-	l1->val = d%10;
-	d = (d >= 10) ? 1 : 0;
-	l1 = l1->next;
-	l2 = l2->next;
+  while(l1 || l2) {
+	carrier = ((l1?l1->val:0) + (l2?l2->val:0) + carrier);
+    head->val = carrier%10;
+	carrier /= 10;
+	l1 = l1?l1->next:l1;
+	l2 = l2?l2->next:l2;
+  	head = head->next = l1?l1:(l2?l2:(carrier?(struct ListNode *)malloc(sizeof(struct ListNode)):NULL));
   }
-  if(!l1->next)
-	l1->next = l2->next;
-	
-  d = l1->val + l2->val + d;
-  l1->val = d%10;
-  d = (d >= 10) ? 1 : 0;
-
-  while(l1){
-	d = l1->val + d;
-	l1->val = d%10;
-	d = (d >= 10) ? 1 : 0;
-	l1 = l1->next;
+  if(carrier){
+  	head->val = carrier;
+  	head->next = NULL;
   }
-  
-  return head;
+  return res.next;
+}
+struct ListNode *makeListFromChars(const char *array, int size){
+  struct ListNode anchor  = { .next = NULL }, *curr = &anchor;
+  int i = 0;
+  for(; i < size; i++) {
+	curr = curr->next = malloc(sizeof(struct ListNode));
+	curr->val = array[i];
+	curr->next = NULL;
+  }
+  return anchor.next;
 }
 
-
-void print_list(lnode *n) {
-
-  do{
-	if(n->next)
-	  printf("%d -> ",n->val);
-	else
-	  printf("%d -> NULL\n",n->val);
-	n = n->next;
-  }while(n);
-}
-
-void make_nnode_list(lnode* head, int n) {
-  int s = head->val;
-  while(n){
-	head->next = malloc(sizeof(lnode));	
-	head->next->val = s+n;
-	head->next->next = NULL;
-	head = head->next;
-	n--;
-  }
-
-}
 int main()
 {
-  lnode l1 = {1,NULL};
-  lnode l2 = {4,NULL};
-  lnode* l3 = NULL;
-  make_nnode_list(&l1, 0);
-  make_nnode_list(&l2, 3);
-  print_list(&l1);
-  print_list(&l2);
-  l3 = addTwoNumbers(&l1, &l2);
-  print_list(l3);
+  char lista1[] = {5,2,9};
+  char lista2[] = {5,7};
 
-  
+  struct ListNode *l1 = makeListFromChars(lista1, sizeof(lista1));
+  struct ListNode *l2 = makeListFromChars(lista2, sizeof(lista2));
+  print_list(l1);
+  print_list(l2);
+  struct ListNode *l3 = addTwoNumbers(l1, l2);
+  print_list(l3);
   return 0;
 }
