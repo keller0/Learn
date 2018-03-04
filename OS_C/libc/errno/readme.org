@@ -1,0 +1,11 @@
+
+* Macros defined in the header errno.h
+
+1. extern int errno
+ This is the macro set by system calls and some library functions in the event of an error to indicate what went wrong.
+
+2. EDOM Domain Error
+ This macro represents a domain error, which occurs if an input argument is outside the domain, over which the mathematical function is defined and errno is set to EDOM.
+
+3. ERANGE Range Error
+ This macro represents a range error, which occurs if an input argument is outside the range, over which the mathematical function is defined and errno is set to ERANGE.
