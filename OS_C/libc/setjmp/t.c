@@ -15,9 +15,9 @@ void first(void) {
 
 int main() {   
     if (!setjmp(buf))
-        first();                // when executed, setjmp returned 0
+	  first();                // when executed, setjmp returned 0
     else                        // when longjmp jumps back, setjmp returns 1
-        printf("main\n");       // prints
+	  printf("main\n");       // prints
 
     return 0;
 }
