@@ -3,19 +3,16 @@
 #include <assert.h>
 #include "stack.h"
 
-void FataError(char *s){
-  printf("%s\n",s);
-  exit(1);
-}
-void Error(char *s){
-  printf("%s\n",s);
-  exit(2);
-}
 struct Node
 {
   int Element;
   PtrToNode Next;
 };
+
+void Error(char *s){
+  printf("%s\n",s);
+  exit(2);
+}
 
 int main()
 {
@@ -43,30 +40,25 @@ int IsEmpty(Stack S) {
 Stack CreateStack(void) {
   Stack S;
   S = malloc(sizeof(struct Node));
-  if(S == NULL)
-	FataError("out of space!!");
+  assert(S != NULL);
   S->Next = NULL;
   MakeEmpty(S);
   return S;
 }
 
 void MakeEmpty(Stack S) {
-  if(S == NULL)
-	FataError("must use CreateStack first!!");
-  else
-	while(!IsEmpty(S))
-	  Pop(S);
+  assert(S != NULL);
+  while(!IsEmpty(S))
+	Pop(S);
 }
 void Push(Stack S, int X) {
   PtrToNode Ptmp;
   Ptmp = malloc(sizeof(struct Node));
-  if(Ptmp == NULL)
-	FataError("out of space");
-  else {
-	Ptmp->Element = X;
-	Ptmp->Next = S->Next;
-	S->Next = Ptmp;
-  }
+  assert(Ptmp != NULL);
+
+  Ptmp->Element = X;
+  Ptmp->Next = S->Next;
+  S->Next = Ptmp;
 }
 int Top(Stack S) {
   if(!IsEmpty(S))
