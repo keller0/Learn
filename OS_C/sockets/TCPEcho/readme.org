@@ -3,8 +3,8 @@
 
    make client
 ** run
-   - ./server port_number
+   - ./echo-server port_number
 
-   - ./client 127.0.0.1 port_number
+   - ./echo-client 127.0.0.1 "message" port_number
 
-   - or you can edit and run test.sh
+   - or you can edit and run ./test.sh
