@@ -1,0 +1,10 @@
+** compile
+   make server
+
+   make client
+** run
+   - ./server port_number
+
+   - ./client 127.0.0.1 port_number
+
+   - or you can edit and run test.sh
