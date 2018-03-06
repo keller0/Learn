@@ -1,5 +1,6 @@
-* Awk
-** column 
+* Awk & Sed
+** Awk
+*** column 
 - Print all the other columns but not the third one:
   #+BEGIN_SRC SHELL
 $ awk '{$3=""; print $0}' FILE
@@ -57,7 +58,7 @@ $ awk '{print "PREFIX"$0}' FILE
   #+BEGIN_SRC SHELL
 $ sed 's/^/PREFIX/' FILE
   #+END_SRC
-** single quote
+*** single quote
   #+BEGIN_SRC SHELL
 $awk 'BEGIN { print "Don\47t Panic!" }'
 Don't Panic!
@@ -80,8 +81,8 @@ $ awk -v sq="'" 'BEGIN { print "Here is a single quote <" sq ">" }'
 Here is a single quote <'>
   #+END_SRC
 
-* Sed
-** replace words
+** Sed
+*** replace words
 - Replaces the word ‘hello’ with ‘world’ only on line 144:
   #+BEGIN_SRC SHELL
 sed '144s/hello/world/' input.txt > output.txt
@@ -100,7 +101,12 @@ sed '/apple/s/hello/world/' input.txt > output.txt
   #+BEGIN_SRC SHELL
 sed '/apple/!s/hello/world/' input.txt > output.txt
   #+END_SRC
-** Basic usages
+- Replaces the word ‘hello’ with ‘world’ only in lines 1 to 3 and 18 till the last line of the input file (i.e. excluding lines 4 to 17):
+  #+BEGIN_SRC SHELL
+sed '4,17!s/hello/world/' input.txt > output.txt
+  #+END_SRC
+
+*** Basic usages
   #+BEGIN_SRC SHELL
 sed 's/hello/world/' input.txt > output.txt
 sed 's/hello/world/' < input.txt > output.txt
@@ -116,16 +122,13 @@ $ echo | sed 'Q42' ; echo $? //$? -> $status in fish
 
 sed -e '/^foo/d' -e 's/hello/world/' input.txt > output.txt
 sed -e '/^foo/d' -f script2.sed input.txt > output.txt
-
-
   #+END_SRC
-** More examples
+*** More examples
 - transliterate ‘a-j’ into ‘0-9’:
   #+BEGIN_SRC SHELL
 $ echo hello world | sed 'y/abcdefghij/0123456789/'
 74llo worl3
   #+END_SRC
-
 - Appending text after a line.(a)
   #+BEGIN_SRC SHELL
 $ seq 3 | sed '2a hello'
@@ -134,7 +137,6 @@ $ seq 3 | sed '2a hello'
 hello
 3
   #+END_SRC
-
 - Insert text before a line.(i)
   #+BEGIN_SRC SHELL
 $ seq 3 | sed '2i hello'
@@ -143,7 +145,6 @@ hello
 2
 3
   #+END_SRC
-
 - Replace the line(s) whit text.(c)
   #+BEGIN_SRC SHELL
 $ seq 10 | sed '2,9c hello'
@@ -162,7 +163,6 @@ bbb
 3
 cc
   #+END_SRC
-
 - More
   #+BEGIN_SRC SHELL
 $ seq 6 | sed 'n;n;s/./x/'
@@ -171,8 +171,4 @@ $ seq 3 | sed -n '2{s/2/X/ ; p}'
   #+END_SRC- Replaces the word ‘hello’ with ‘world’ only in lines 4 to 17 (inclusive):
   #+BEGIN_SRC SHELL
 sed '4,17s/hello/world/' input.txt > output.txt
-  #+END_SRC
--Replaces the word ‘hello’ with ‘world’ only in lines 1 to 3 and 18 till the last line of the input file (i.e. excluding lines 4 to 17):
-  #+BEGIN_SRC SHELL
-sed '4,17!s/hello/world/' input.txt > output.txt
   #+END_SRC
