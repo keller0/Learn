@@ -1,15 +1,21 @@
-# Learn OS
-## Book [Computer Systems: A Programmer's Perspective (3rd Edition)](http://csapp.cs.cmu.edu/3e/about.html)
-# Learn Lisp
-## Book [SICP](https://mitpress.mit.edu/sicp/)
+# Learn
+## Books
+[Computer Systems: A Programmer's Perspective (3rd Edition)](http://csapp.cs.cmu.edu/3e/about.html)
 
-此书可在MIT官方网址在线查看[The complete book text in HTML](https://mitpress.mit.edu/sicp/full-text/book/book.html)
+[C Programming Language (2nd Edition)](https://www.amazon.com/Programming-Language-2nd-Brian-Kernighan/dp/0131103628)
 
-书内代码范例[Code from the book](https://mitpress.mit.edu/sicp/code/index.html)
+[SICP](https://mitpress.mit.edu/sicp/)
 
-# Learn Erlang
-## Book [Programming Erlang Software for a Concurrent World](https://pragprog.com/book/jaerlang2/programming-erlang)
+[Programming Erlang Software for a Concurrent World](https://pragprog.com/book/jaerlang2/programming-erlang)
 
-## Doc [Erlang/OTP](http://erlang.org/doc/index.html) 
+[Data Structures and Algorithm Analysis in C (2nd Edition)](https://www.amazon.com/Data-Structures-Algorithm-Analysis-2nd/dp/0201498405)
 
-## Websites [Learn You Some Erlang for Great Good](http://learnyousomeerlang.com/content),[Erlang.org](http://erlang.org)
+[Computer Networking: A Top-Down Approach (6th Edition)](https://www.amazon.com/Computer-Networking-Top-Down-Approach-6th/dp/0132856204)
+
+[Redis In Action](https://redislabs.com/community/ebook/)
+## Websites 
+[Learn You Some Erlang for Great Good](http://learnyousomeerlang.com/content)
+
+[Erlang.org](http://erlang.org)
+
+[Grymoire](http://www.grymoire.com)
