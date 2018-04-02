@@ -9,7 +9,7 @@
 ### [SICP](https://mitpress.mit.edu/sicp/)
 ## Websites 
 ### [Erlang.org](http://erlang.org)
+### [GNU Software](https://www.gnu.org/software/)
 ### [Grymoire](http://www.grymoire.com)
 ### [Hackerrank](https://www.hackerrank.com)
 ### [Learn You Some Erlang for Great Good](http://learnyousomeerlang.com/content)
-
