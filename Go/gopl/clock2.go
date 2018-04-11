@@ -5,10 +5,11 @@ import (
 	"net"
 	"log"
 	"io"
+	"os"
 )
 
 func main() {
-	listener, err := net.Listen("tcp", "localhost:8888")
+	listener, err := net.Listen("tcp", "localhost:"+os.Args[1])
 	if err != nil {
 		log.Fatal(err)
 	}

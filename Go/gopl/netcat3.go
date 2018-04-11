@@ -12,8 +12,15 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer conn.Close()
-	mustCopy(os.Stdout, conn)
+	done := make(chan int)
+	go func() {
+		io.Copy(os.Stdout, conn) //ignoring err
+		log.Println("done")
+		done <- 1
+	}()
+	mustCopy(conn, os.Stdin)
+	conn.Close()
+	<-done
 }
 
 func mustCopy(dst io.Writer, src io.Reader) {
