@@ -1,1 +1,1 @@
-** problem : [[https://www.hackerrank.com/challenges/climbing-the-leaderboard/problem][climbing-the-leaderboard]] from hackerrank
+** Problem : [[https://www.hackerrank.com/challenges/climbing-the-leaderboard/problem][climbing-the-leaderboard]] from hackerrank.
