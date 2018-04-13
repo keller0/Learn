@@ -81,6 +81,11 @@ $ awk -v sq="'" 'BEGIN { print "Here is a single quote <" sq ">" }'
 Here is a single quote <'>
   #+END_SRC
 
+*** problems
+**** [[https://www.hackerrank.com/challenges/awk-4/problem][Concatenate every 2 lines of input with a semi-colon]]
+	 #+BEGIN_SRC SHELL
+	 awk 'ORS=NR%2?";":"\n"'
+	 #+END_SRC
 ** Sed
 *** replace words
 - Replaces the word ‘hello’ with ‘world’ only on line 144:
