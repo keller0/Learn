@@ -1,0 +1,5 @@
+** Problem : [[https://www.hackerrank.com/challenges/circular-palindromes/problem][Circular Palindromes]] from hackerrank
+
+** Wiki [[https://en.wikipedia.org/wiki/Longest_palindromic_substring][Longest palindromic substring]]
+   - Manacher's algorithm O(n)
+   - DP O(n^2)
