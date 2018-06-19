@@ -1,5 +1,6 @@
 # Learn
 ## Books
+### [A Tour of C++](http://www.stroustrup.com/Tour.html)
 ### [Computer Networking: A Top-Down Approach (6th Edition)](https://www.amazon.com/Computer-Networking-Top-Down-Approach-6th/dp/0132856204)
 ### [Computer Systems: A Programmer's Perspective (3rd Edition)](http://csapp.cs.cmu.edu/3e/about.html)
 ### [Data Structures and Algorithm Analysis in C (2nd Edition)](https://www.amazon.com/Data-Structures-Algorithm-Analysis-2nd/dp/0201498405)
