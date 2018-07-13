@@ -15,3 +15,4 @@
 ### [Grymoire](http://www.grymoire.com)
 ### [Hackerrank](https://www.hackerrank.com)
 ### [Learn You Some Erlang for Great Good](http://learnyousomeerlang.com/content)
+### [Ray Toal at LMU](http://cs.lmu.edu/~ray/)
