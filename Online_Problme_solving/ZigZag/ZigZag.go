@@ -8,27 +8,30 @@ import (
 )
 
 func main() {
-	
-	fmt.Println("Results:", convert("AB", 1))
+	test := []string{"abcdefg", "1234567"}
+	for _, t := range test {
+		fmt.Println(t, ":", convert(t, 2))
+	}
 }
 
-
 func convert(s string, numRows int) string {
-	if numRows == 1 { return s }
-    l := len(s)
+	if numRows == 1 {
+		return s
+	}
+	l := len(s)
 	var rowNum int
-	if  l < numRows {
+	if l < numRows {
 		rowNum = l
-	}else {
+	} else {
 		rowNum = numRows
 	}
 	currentRow := 0
 	down := false
 	ss := make([]string, rowNum)
 
-    for i:=0; i<l; i++ {
+	for i := 0; i < l; i++ {
 
-        if currentRow == 0 || currentRow == rowNum -1 {
+		if currentRow == 0 || currentRow == rowNum-1 {
 			down = !down
 		}
 		ss[currentRow] += string(s[i])
@@ -38,10 +41,10 @@ func convert(s string, numRows int) string {
 			currentRow--
 		}
 	}
-	
+
 	var ans string
-	for i:=0; i<len(ss); i++ {
+	for i := 0; i < len(ss); i++ {
 		ans += ss[i]
 	}
-    return ans
+	return ans
 }

@@ -8,8 +8,8 @@ class Two{
 	for (int i = 0; i < nums.length; i++) {
 	    int complement = target - nums[i];
 	    if (map.containsKey(complement)) {
-		return new int[] { map.get(complement), i };
-	    }
+			return new int[] { map.get(complement), i };
+		}
 	    map.put(nums[i], i);
 	}
 	throw new IllegalArgumentException("No two sum solution");
@@ -17,10 +17,9 @@ class Two{
 
     
     public static void main(String[] args) {
-	int arr[] = {9,2,3,4};
-	int res[] = twoSum(arr, 5);
-
-	System.out.println(Arrays.toString(res));
+		int arr[] = {9,2,3,4};
+		int res[] = twoSum(arr, 5);
+		System.out.println(Arrays.toString(res));
     }
 }
 
