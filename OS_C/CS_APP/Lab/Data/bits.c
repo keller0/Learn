@@ -1,7 +1,7 @@
 /* 
  * CS:APP Data Lab 
  * 
- * <Please put your name and userid here>
+ * <caijiaqi null>
  * 
  * bits.c - Source file with your solutions to the Lab.
  *          This is the file you will hand in to your instructor.
@@ -139,7 +139,7 @@ NOTES:
  *   Rating: 1
  */
 int bitAnd(int x, int y) {
-  return 2;
+  return ~(~x | ~y);
 }
 /* 
  * getByte - Extract byte n from word x
@@ -150,15 +150,7 @@ int bitAnd(int x, int y) {
  *   Rating: 2
  */
 int getByte(int x, int n) {
-
-
-
-
-
-
-
-  return 2;
-
+  return x >> (n << 3) & 0xFF;
 }
 /* 
  * logicalShift - shift x to the right by n, using a logical shift
@@ -169,7 +161,8 @@ int getByte(int x, int n) {
  *   Rating: 3 
  */
 int logicalShift(int x, int n) {
-  return 2;
+  int t = ((~(1<<31)>>n)<<1)+1;
+  return x>>n&t;
 }
 /*
  * bitCount - returns count of number of 1's in word
@@ -179,7 +172,21 @@ int logicalShift(int x, int n) {
  *   Rating: 4
  */
 int bitCount(int x) {
-  return 2;
+  // https://en.wikipedia.org/wiki/Hamming_weight
+  int m1 = 0x55 | 0x55 << 8;
+  int m2 = 0x33 | 0x33 << 8;
+  int m4 = 0x0f | 0x0f << 8;
+  int h01 = 0x01 | 0x01 << 8;
+  m1 |= m1 << 16;
+  m2 |= m2 << 16;
+  m4 |= m4 << 16;
+  h01 |= h01 <<16;
+
+  x -= (x >> 1) & m1;             //put count of each 2 bits into those 2 bits
+  x = (x & m2) + ((x >> 2) & m2); //put count of each 4 bits into those 4 bits
+  x = (x + (x >> 4)) & m4;        //put count of each 8 bits into those 8 bits
+  //returns left 8 bits of x + (x<<8) + (x<<16) + (x<<24) + ...
+  return (x * h01) >> 56;
 }
 /* 
  * bang - Compute !x without using !
@@ -189,7 +196,7 @@ int bitCount(int x) {
  *   Rating: 4 
  */
 int bang(int x) {
-  return 2;
+  return (((~x+1) | x) >> 31) + 1;
 }
 /* 
  * tmin - return minimum two's complement integer 
@@ -198,7 +205,7 @@ int bang(int x) {
  *   Rating: 1
  */
 int tmin(void) {
-  return 2;
+  return 1<<31;
 }
 /* 
  * fitsBits - return 1 if x can be represented as an 
@@ -210,7 +217,9 @@ int tmin(void) {
  *   Rating: 2
  */
 int fitsBits(int x, int n) {
-  return 2;
+  int s = 32 + ~n + 1;
+  int t = x << s >> s;
+  return !(t ^ x);
 }
 /* 
  * divpwr2 - Compute x/(2^n), for 0 <= n <= 30
@@ -221,7 +230,10 @@ int fitsBits(int x, int n) {
  *   Rating: 2
  */
 int divpwr2(int x, int n) {
-    return 2;
+  int s = (x>>31) & 1;
+  int r = (~((~0) << n)) & x; // remainder
+  x += (s & !!r) << n;
+  return x>>n;
 }
 /* 
  * negate - return -x 
@@ -231,7 +243,7 @@ int divpwr2(int x, int n) {
  *   Rating: 2
  */
 int negate(int x) {
-  return 2;
+  return ~x + 1;
 }
 /* 
  * isPositive - return 1 if x > 0, return 0 otherwise 
@@ -241,7 +253,7 @@ int negate(int x) {
  *   Rating: 3
  */
 int isPositive(int x) {
-  return 2;
+  return !((x>>31) | !x);
 }
 /* 
  * isLessOrEqual - if x <= y  then return 1, else return 0 
@@ -251,7 +263,11 @@ int isPositive(int x) {
  *   Rating: 3
  */
 int isLessOrEqual(int x, int y) {
-  return 2;
+  int sx = (x>>31)&1;
+  int sy = (y>>31)&1;
+  int ssum = ((y + ~x + 1) >> 31) & 1;
+
+  return ((sx ^ sy) & sx) | (!(sx ^ sy) & !ssum);
 }
 /*
  * ilog2 - return floor(log base 2 of x), where x > 0
@@ -261,7 +277,12 @@ int isLessOrEqual(int x, int y) {
  *   Rating: 4
  */
 int ilog2(int x) {
-  return 2;
+  int mb = (!!(x >> 16)) << 4;
+  mb += ((!!(x >> (mb+8))) << 3);
+  mb += ((!!(x >> (mb+4))) << 2);
+  mb += ((!!(x >> (mb+2))) << 1);
+  mb += !!(x >> (mb+1));
+  return mb;
 }
 /* 
  * float_neg - Return bit-level equivalent of expression -f for
@@ -275,7 +296,11 @@ int ilog2(int x) {
  *   Rating: 2
  */
 unsigned float_neg(unsigned uf) {
- return 2;
+  unsigned nef = uf ^ (0x1 << 31);
+  unsigned t = uf & (0x7fffffff);
+  if(t > 0x7f800000)
+    return uf;
+  return nef;
 }
 /* 
  * float_i2f - Return bit-level equivalent of expression (float) x
@@ -301,5 +326,9 @@ unsigned float_i2f(int x) {
  *   Rating: 4
  */
 unsigned float_twice(unsigned uf) {
-  return 2;
+  if(!(uf & 0x7f800000))
+    uf = ((uf & 0x007FFFFF) << 1) | (0x80000000 & uf);
+  else if (( uf & 0x7F800000) != 0x7F800000)
+    uf = uf + 0x800000;
+  return uf;
 }
