@@ -16,9 +16,8 @@ public class LongestSubstring {
         return ans;
     }
     public static void main(String[] args) {
-        String s = "asddd";
-        System.out.println("ori "+s);
-        int len = lengthOfLongestSubstring(s);
-        System.out.println(len);
+        System.out.println(lengthOfLongestSubstring("123210"));
+        System.out.println(lengthOfLongestSubstring(" "));
+        System.out.println(lengthOfLongestSubstring("asjrgapa"));
     }
 }
