@@ -35,3 +35,22 @@ print(10 .. 20) --> 1020
 -- print length of a string use #
 print(#"12345\n\t")
 print(#tostring(10))
+
+
+print(string.upper( "this is an uppercase string" ))
+print(string.format( "pi = %.4f", math.pi ))
+
+local s1 = "hello world"
+local sBegin, sEnd = string.find( s1, "world")
+print(sBegin, sEnd)
+
+local found = string.match( s1, "world" )
+print(found)
+
+local date = "today is 20/2/2019"
+local d = string.match( date, "%d+/%d+/%d+" )
+print(d)
+
+local temp = "hell0"
+local temp2 = string.gsub( temp, "0", "o")
+print(temp2)
