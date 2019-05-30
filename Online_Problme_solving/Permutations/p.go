@@ -31,7 +31,7 @@ func permute(nums []int) [][]int {
 }
 
 func main() {
-	c := []int{1, 2, 3, 4, 5}
+	c := []int{1, 2, 3}
 
 	for _, perm := range permute(c) {
 		fmt.Println(perm)

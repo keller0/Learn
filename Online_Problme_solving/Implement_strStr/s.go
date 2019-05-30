@@ -12,9 +12,9 @@ func strStr(haystack string, needle string) int {
 	if l < len(needle) {
 		return -1
 	}
-	for i,_ := range haystack {
+	for i, _ := range haystack {
 		if haystack[i] == needle[0] {
-			for j,_ := range needle{
+			for j, _ := range needle {
 				if i+j >= l || haystack[i+j] != needle[j] {
 					break
 				}
@@ -49,15 +49,15 @@ func strStr2(haystack string, needle string) int {
 
 func main() {
 	cases := map[string]string{
-		"asd":"asd",
-		"a":"asd",
-		"":"asd",
-		"as":"",
-		"ppppp":"asp",
+		"asd":   "asd",
+		"a":     "asd",
+		"":      "asd",
+		"as":    "",
+		"ppppp": "asp",
 	}
-	for a,b := range cases{
-		fmt.Println(a,b)
-		fmt.Println(strStr(a, b),strStr2(a, b))
+	for a, b := range cases {
+		fmt.Println(a, b)
+		fmt.Println(strStr(a, b), strStr2(a, b))
 	}
 
 }

@@ -8,7 +8,7 @@ func isValidSudoku(board [][]byte) bool {
 	rowMap := make([]map[byte]int, 9)
 	colMap := make([]map[byte]int, 9)
 	boxMap := make([]map[byte]int, 9)
-	for c:=0; c < 9; c++ {
+	for c := 0; c < 9; c++ {
 		rowMap[c] = make(map[byte]int)
 		colMap[c] = make(map[byte]int)
 		boxMap[c] = make(map[byte]int)
@@ -21,18 +21,18 @@ func isValidSudoku(board [][]byte) bool {
 			}
 			if _, er := rowMap[i][current]; !er {
 				rowMap[i][current] = 1
-			}else {
+			} else {
 				return false
 			}
 			if _, el := colMap[j][current]; !el {
 				colMap[j][current] = 1
-			}else {
+			} else {
 				return false
 			}
 			boxNumber := i/3 + j/3*3
 			if _, eb := boxMap[boxNumber][current]; !eb {
 				boxMap[boxNumber][current] = 1
-			}else{
+			} else {
 				return false
 			}
 		}

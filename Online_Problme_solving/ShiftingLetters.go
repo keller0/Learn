@@ -15,27 +15,27 @@ import (
 
 func main() {
 	s := "abc"
-	shift := []int{3,51,1}			
+	shift := []int{3, 51, 1}
 	a := shiftingLetters(s, shift)
 
-	fmt.Println("Results:",a)
+	fmt.Println("Results:", a)
 
 }
 
 func shiftingLetters(S string, shifts []int) string {
 	var X = 0
-	for _, shift := range shifts{
+	for _, shift := range shifts {
 		X += shift % 26
 	}
 	fmt.Println(X)
 	var ans string
-	for i:=0; i < len(S); i++ {
+	for i := 0; i < len(S); i++ {
 		var index rune
-		index = rune(S[i]) -'a'
+		index = rune(S[i]) - 'a'
 		fmt.Println(index, X)
 		ans += string(rune((int(index)+X)%26) + 'a')
-		X = X-shifts[i]%26
+		X = X - shifts[i]%26
 	}
-	
+
 	return ans
 }

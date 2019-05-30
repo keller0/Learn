@@ -10,6 +10,6 @@ func main() {
 	for _, c := range s {
 		a ^= c
 	}
-	
+
 	fmt.Println(string(a))
 }
