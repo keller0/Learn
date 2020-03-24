@@ -7,3 +7,5 @@
 *.beam
 
 .vscode
+
+.DS_Store
