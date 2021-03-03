@@ -18,3 +18,4 @@
 * [Ray Toal at LMU](http://cs.lmu.edu/~ray/)
 * [the cryptopals crypto challenges](https://cryptopals.com/)
 * [CS:APP3e Lab Assignments](http://csapp.cs.cmu.edu/3e/labs.html)
+* [Microsoft Docs | Azure Application Architecture Guide ](https://docs.microsoft.com/en-us/azure/architecture/guide/)
