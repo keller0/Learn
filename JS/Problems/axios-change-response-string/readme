@@ -1,0 +1,25 @@
+## sometimes axios will change the response data.
+
+converted a string to a number and the value was changed
+
+string 100000000000068569 -> number 100000000000068580
+
+
+https://github.com/axios/axios/issues/4726
+
+https://stackoverflow.com/questions/57925442/how-to-return-18-character-string-response-from-an-axios-post-request
+
+https://stackoverflow.com/questions/17224536/why-is-one-number-valid-json
+
+
+```
+solution:
+set config.transitional.forcedJSONParsing= false; 
+or
+axios.get('http://127.0.0.1:1234',{transformResponse: []})
+
+demo:
+node app.js
+then open index.html in the browser
+
+```
