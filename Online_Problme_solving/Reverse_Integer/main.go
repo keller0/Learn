@@ -24,6 +24,30 @@ func reverse(x int) int {
 	return result
 }
 
+// safe one
+func reverse2(x int) int {
+	var result int
+
+	upper := math.MaxInt32 / 10
+	lower := math.MinInt32 / 10
+
+	for x != 0 {
+		tmp := x % 10
+
+		x = x / 10
+		if result > upper || (result == upper && tmp > 7) {
+			return 0
+		}
+		if result < lower || (result == lower && tmp < -8) {
+			return 0
+		}
+
+		result = result*10 + tmp
+
+	}
+	return result
+}
+
 var testCases = []struct {
 	input  int
 	output int
@@ -45,7 +69,7 @@ func main() {
 	for _, c := range testCases {
 		i := c.input
 		o := c.output
-		n := reverse(i)
+		n := reverse2(i)
 		fmt.Println(i, n)
 
 		if o != n {
