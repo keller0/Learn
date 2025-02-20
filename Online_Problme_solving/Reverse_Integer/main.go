@@ -30,20 +30,19 @@ func reverse2(x int) int {
 
 	upper := math.MaxInt32 / 10
 	lower := math.MinInt32 / 10
-
+	// fmt.Println(x)
+	// fmt.Println(upper, lower)
 	for x != 0 {
 		tmp := x % 10
-
+		// fmt.Println(result, tmp)
 		x = x / 10
-		if result > upper || (result == upper && tmp > 7) {
+		if result > upper {
 			return 0
 		}
-		if result < lower || (result == lower && tmp < -8) {
+		if result < lower {
 			return 0
 		}
-
 		result = result*10 + tmp
-
 	}
 	return result
 }
@@ -76,5 +75,6 @@ func main() {
 			fmt.Println("Test case failed")
 		}
 	}
+	// fmt.Println(reverse2(-9147483646))
 
 }
